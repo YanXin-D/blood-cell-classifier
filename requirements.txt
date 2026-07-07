@@ -19,6 +19,3 @@ streamlit-plotly-events>=0.0.6
 
 # 分割（cyto3 需 Cellpose 3.x）
 cellpose>=3.1.1,<4.0.0
-
-# 汇报 PPT 生成（可选）
-python-pptx>=0.6.21
