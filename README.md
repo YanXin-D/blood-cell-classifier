@@ -1,6 +1,6 @@
-# method_2 — 胎儿细胞检测流水线
+# method_2 — 目标细胞检测流水线
 
-基于 Cellpose 分割 + ResNet18 二分类的胎儿细胞检测系统，配套 Streamlit 标注工具 Cell Inspector。
+基于 Cellpose 分割 + ResNet18 二分类的目标细胞检测系统，配套 Streamlit 标注工具 Cell Inspector。
 
 ## 项目结构
 
