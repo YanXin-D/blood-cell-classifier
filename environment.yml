@@ -1,0 +1,9 @@
+# 项目统一使用 conda base 环境（Python 3.12）
+# 路径: C:\Users\lenovo\anaconda3\python.exe
+#
+# 激活:
+#   conda activate base
+# 或双击 activate_env.bat
+#
+# 安装/更新依赖:
+#   pip install -r requirements.txt

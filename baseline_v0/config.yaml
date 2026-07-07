@@ -1,0 +1,54 @@
+img_size: 224
+batch_size: 16
+epochs: 100
+lr: 0.0001
+freeze_layer1: true
+freeze_layer2: true
+num_classes: 2
+save_dir: checkpoints
+data_root: data
+output_dir: outputs
+train_dir: data/train
+val_dir: data/val
+num_workers: 2
+seed: 42
+tensorboard_dir: outputs/tensorboard
+
+# 训练策略（CNN 主路径）
+train:
+  loss: focal
+  focal_gamma: 2.0
+  use_weighted_sampler: true
+  best_metric: fetal_recall
+  early_stop_patience: 20
+  freeze_layer3: false
+  hard_negatives_max: 2000
+  val_ratio: 0.2
+
+# 推理：CNN 打分 + 可选形态后处理（morph_filter 开关）
+detection:
+  segment_batch: fetal_culture
+  raw_dir: data/raw/all_cells
+  crops_dir: data/all_cells_large
+  min_probability: 0.99          # CNN 召回主阈值，可按 PR 曲线调整
+  morph_filter: false            # true 时叠加面积规则（高精准模式）
+  min_area: 350
+  use_model: true
+
+# Cellpose 分割（原始视野图 -> 单细胞 crop）
+segment:
+  gpu: true
+  fetal_culture:
+    pretrained_model: cyto3
+    diameter: 12
+    min_size: 15
+    crop_pad: 10
+    cellprob_threshold: 0.0
+    flow_threshold: 0.4
+  blood_cell:
+    pretrained_model: cyto3
+    diameter: 6
+    min_size: 15
+    crop_pad: 6
+    cellprob_threshold: 0.0
+    flow_threshold: 0.4
